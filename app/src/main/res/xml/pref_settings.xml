@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<PreferenceCategory
+		android:title="사용자">
+
+		<CheckBoxPreference
+			android:defaultValue="false"
+			android:key="useUserName"
+			android:summaryOn="사용자의 이름을 사용합니다."
+			android:summaryOff="사용자의 이름을 사용하지 않습니다."
+			android:title="사용자의 이름 사용"
+			/>
+
+		<EditTextPreference
+			android:defaultValue="@string/Name"
+			android:title="사용자 이름 설정"
+			android:key="userName"
+			android:singleLine="true"
+			android:maxLines="1"
+			/>
+
+		<ListPreference
+			android:defaultValue="0"
+			android:dependency="useUserName"
+			android:entries="@array/userNameOpen"
+			android:entryValues="@array/userNameOpen_values"
+			android:key="userNameOpen"
+			android:negativeButtonText="@null"
+			android:positiveButtonText="@null"
+			android:title="이름 공개 범위"
+			/>
+
+	</PreferenceCategory>
+
+	<PreferenceCategory
+		android:title="자동 업데이트">
+
+		<SwitchPreference
+			android:title="자동 업데이트"
+		    android:defaultValue="false"
+		    android:key="autoUpdate"
+		    android:switchTextOff="OFF"
+		    android:switchTextOn="ON"
+		    android:summary="자동 업데이트를 설정합니다." />
+
+	</PreferenceCategory>
+
+	<PreferenceCategory
+		android:title="알림">
+
+		<CheckBoxPreference
+			android:title="알림사용"
+			android:defaultValue="false"
+			android:summary="업데이트 후 알림을 띄웁니다."
+			android:key="useUpdateNotifi" />
+
+		<RingtonePreference
+			android:title="알림소리"
+			android:defaultValue="@string/ringtone_path"
+			android:ringtoneType="notification"
+			android:showSilent="true"
+			android:dependency="useUpdateNotifi" />
+
+	</PreferenceCategory>
+
+
+	<PreferenceCategory
+		android:title="어플리케이션 정보">
+
+		<Preference
+			android:title="개발자정보"
+		    android:summary="개발자 정보를 확인합니다">
+			<intent
+				android:targetClass="d"
+			    android:targetPackage="com.android.gold.preferenceactivityexample" />
+		</Preference>
+
+		<Preference
+			android:title="메일보내기"
+		    android:summary="개발자에게 메일 보내기" >
+			<intent
+				android:action="android.intent.action.SENDTO"
+			    android:data="mailto:pnurep@gmail.com"/>
+		</Preference>
+
+
+	</PreferenceCategory>
+
+
+
+</PreferenceScreen>
